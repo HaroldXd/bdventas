@@ -1,0 +1,208 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+body {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+/* Cabecera */
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 63px;
+    background: #171717;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    margin-right: 10px;
+}
+
+.logo {
+    margin-left: 30px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.navbar a {
+    display: block;
+    padding: 20px 20px;
+    color: #000000;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.navbar a:hover {
+    background: #dad9d9;
+}
+
+/* Encabezado */
+
+
+.title {
+    margin-bottom: 40px;
+    font-size: 60px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #615f5f;
+}
+.title1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 60px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #615f5f;
+}
+
+/* Contenido */
+p {
+    margin-bottom: 40px;
+    font-size: 18px;
+    color: #6741c0;
+    padding: 0 20px; /* Cambiado de 100px a 20px */
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 40px;
+    border: 2px solid #9c27b0;
+    color: #fff;
+    text-decoration: none;
+    background: #9c27b0;
+}
+
+.btn:hover {
+    background: none;
+}
+
+.btn-home {
+    display: flex;
+}
+
+.btn-home a {
+    margin: 0 10px;
+}
+
+/* Sección de contenido */
+.content {
+    height: auto; /* Cambiado de 50vh a auto */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Agregado padding */
+}
+
+.content1 {
+    background-color: rgba(199, 187, 187, 0.7);
+    border: none;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgb(44, 43, 43);
+    padding: 20px; /* Agregado padding */
+}
+
+.sau {
+    padding: 80px;
+    background: #929191;
+}
+
+.box-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.box-container .box {
+    height: 15rem; /* Cambiado de 11rem a 15rem */
+    width: 17rem;
+    background: #101010;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 0.3rem 5rem rgba(0, 0, 0, 0.5);
+    margin: 20px; /* Cambiado de 2rem a 20px */
+}
+
+.box-container .box i {
+    height: 3rem;
+    width: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    background: #9c27b0;
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.box-container .box h3 {
+    font-size: 20px;
+    color: #9c27b0;
+}
+
+.box-container .box p {
+    padding: 0 15px;
+    font-size: 16px;
+}
+
+.about {
+    background: #fff;
+}
+
+
+
+
+.contact {
+    padding-top: 20px;
+    background: #171717;
+    padding-bottom: 0;
+}
+
+/* Media queries para pantalla pequeña */
+@media (max-width: 768px) {
+    .title {
+        margin-bottom: 0;
+        font-size: 40px;
+    }
+    .sau {
+        height: auto; /* Cambiado de 120vh a auto */
+    }
+    .navbar {
+        display: none;
+    }
+    .card1 {
+        /* Add shadows to create the "card" effect */
+        
+        box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+        transition: 0.3s;
+      }
+      
+      /* On mouse-over, add a deeper shadow */
+      .card1:hover {
+        box-shadow: 0 8px 16px 0 rgba(177, 42, 42, 0.2);
+      }
+      
+      /* Add some padding inside the card container */
+      .container {
+        padding: 2px 16px;
+      }
+}
