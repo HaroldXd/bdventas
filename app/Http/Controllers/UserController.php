@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
+use Illuminate\Support\Facades\Hash;
+
 class UserController extends Controller
 {
     public function showLogin()
@@ -57,6 +59,37 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/login');
     }
+    public function showRegister()
+    {
+        return view('register');
+    }
+
+   
+    
+
+        public function register(Request $request)
+        {
+            $data = $request->validate([
+                'name' => 'required',
+                'password' => 'required|min:6|confirmed',
+                'email' => 'required|email|unique:users', // Add this line if email is required
+
+            ]);
+    
+            $data['role'] = '1';
+            $data['password'] = Hash::make($data['password']);
+    
+            $user = User::create($data);
+    
+            auth()->login($user);
+    
+            return redirect()->route('user.home');
+        }
+    
+        // ... (other methods)
+    
+    
+
 }
 
 

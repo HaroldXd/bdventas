@@ -71,3 +71,7 @@ Route::get('/user/front/{id}/detalle', [FrontController::class, 'detalle'])->nam
 Route::resource('/front', FrontController::class);
 
 
+
+Route::get('/register', [UserController::class, 'showRegister'])->name('register.form');
+Route::post('/register', [UserController::class, 'register'])->name('register');
+

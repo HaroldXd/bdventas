@@ -78,9 +78,8 @@ O
           </div>
          
             
-            <div class="form-actions">
-                <button class=" btn-ingresar">
-                    Crear Cuenta </button>
+            <div class="form-actions" style="align-content: center" align="center">
+               <a href="/register">Crear Cuenta</a>
             </div>
             
         </form>

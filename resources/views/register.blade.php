@@ -39,10 +39,25 @@
     </div>
     <div class="content">
 
-        <form method="POST" action="{{ route ('identificacion') }}">
+        <form method="POST" action="{{ route ('register') }}">
             @csrf
-            <h4 class="label-titles">Inicio de Sesión</h4>
+            <h4 class="label-titles">Registro</h4>
             <div class="form-group">
+                <div class="form-group">
+                    <label class="label-subtitles">
+                        EMAIL:
+                    </label>
+                    <div class="input-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input class="form-control @error('email') is-invalid @enderror" type="email" placeholder="Ingrese su correo electrónico" id="email" name="email" value="{{ old('email') }}" />
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+                
                 <label class="label-subtitles">
                 USUARIO:</label>
                 <div class="input-icon">
@@ -67,21 +82,29 @@
                     @enderror
                 </div>
             </div>
+            <div class="form-group">
+                <label class="label-subtitles">CONFIRMAR CONTRASEÑA:</label>
+                <div class="input-icon">
+                    <i class="fas fa-lock"></i>
+                    <input class="form-control @error('password_confirmation') is-invalid @enderror" type="password" placeholder="Confirme la contraseña" id="password_confirmation" name="password_confirmation" />
+                    @error('password_confirmation')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+            </div>
+           
+
 
             <hr />
             <div class="form-actions">
                 <button class=" btn-ingresar">
-                    Ingresar </button>
+                    Registrar </button>
             </div>
-            <div class="linebreak">
-O
-          </div>
          
-            
-            <div class="form-actions">
-                <button class=" btn-ingresar">
-                    Crear Cuenta </button>
-            </div>
+         
+        
             
         </form>
     </div>
