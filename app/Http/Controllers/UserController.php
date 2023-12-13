@@ -55,7 +55,7 @@ class UserController extends Controller
     public function salir()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect('/login');
     }
 }
 

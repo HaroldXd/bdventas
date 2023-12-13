@@ -41,7 +41,8 @@
                     <li>
 
                         <div class="dropdown" style="margin-inline-start: 20px ;">
-                            <a class="btn btn dropdown-toggle" style="width: 50px; background-color:rgba(0, 0, 0, 0.1) ;      " href="#"
+                            <a class="btn btn dropdown-toggle"
+                                style="width: 50px; background-color:rgba(0, 0, 0, 0.1) ;      " href="#"
                                 role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <i class="far  fa-user" style="color: black;"></i>
@@ -52,12 +53,31 @@
                             <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuLink">
                                 <a class="nav-link" href="{{ route('login') }}" id="btnlogin">login</a>
                                 @if (Auth::check())
+                                  
                                     <script>
                                         const btnlogin = document.getElementById('btnlogin');
                                         btnlogin.remove();
+
+
+                                       
                                     </script>
-                                    <a class="dropdown-item" href="#">Perfil</a>
-                                    <a class="dropdown-item" href="#">Carrito</a>
+                                    <a class="dropdown-item" href="#" id="btnperfil">Perfil</a>
+                                    <a class="dropdown-item" href="#" id="btncarrito">Carrito</a>
+                                    @if (Auth::user()->role == 0)
+                                        <script>
+                                            const btnvista = document.getElementById('btnvista');
+                                            const btnvista1 = document.getElementById('btnperfil');
+                                            const btnvista2 = document.getElementById('btncarrito');
+                                            btnvista1.remove();
+                                            btnvista2.remove();
+                                            btnvista.remove();
+                                        </script>
+                                          <a class="dropdown-item" href="{{ route('admin.home') }}" id="btnvista">Vista
+                                            Administrador</a>
+                                    @endif
+
+
+                                    
                                     <a class="dropdown-item" href="{{ route('salir') }}">Salir</a>
                             </div>
                         </div>
