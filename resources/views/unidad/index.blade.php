@@ -5,7 +5,7 @@
 @section('contenido')
     <div class="card">
         <div class="card-header">
-            <h3> LISTADO DE UNIDADES </h3>
+            <h3> LISTADO DE ESTADOS </h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
                     <i class="fas fa times"></i>

@@ -47,7 +47,7 @@
                     <th scope="col">Codigo</th>
                     <th scope="col">Descripcion</th>
                     <th scope="col">Categoria</th>
-                    <th scope="col" >Unidad</th>
+                    <th scope="col">Estado</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Stock</th>
                     <th scope="col">Imagen</th>
@@ -75,30 +75,44 @@
 
                             <td>{{ $itemproducto->stock }}</td>
 
-                            <td >
-                                <img src="{{asset($itemproducto->imagen)}}" alt="{{$itemproducto->title}}" class="img-fluid" width="100" height="100">
-                                
+                            <td>
+                                <img src="{{ asset($itemproducto->imagen) }}" alt="{{ $itemproducto->title }}"
+                                    class="img-fluid" width="100" height="100">
+
                             </td>
-                            
-                            <td><a href="{{ route('productos.edit', $itemproducto->idproducto) }}"
-                                    class="btn btn-info btnsm"><i class="fas fa-edit"></i>
-                                    Editar</a>
+
+                            <td>
+                                <a href="{{ route('productos.edit', $itemproducto->idproducto) }}"
+                                    class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Editar</a>
                                 <a href="{{ route('productos.confirmar', $itemproducto->idproducto) }}"
-                                    class="btn btn-danger btnsm"><i class="fas fa-trash"></i>
-                                    Eliminar</a>
+                                    class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Eliminar</a>
+
+                                   
+                                @if ($itemproducto->detalleProducto)
+                                    <a href="{{ route('detalles.edit', $itemproducto->detalleProducto->id_detalle) }}"
+                                        class="btn btn-success btn-sm">
+                                        <i class="fas fa-edit"></i> Editar Detalle
+                                    </a>
+                                @else
+                                    <a href="{{ route('detalles.create', $itemproducto->idproducto) }}"
+                                        class="btn btn-success btn-sm">
+                                        <i class="fas fa-plus"></i> Agregar Detalle
+                                    </a>
+                                @endif
+
                             </td>
 
                         </tr>
                     @endforeach
                 @endif
             </tbody>
-            
+
         </table>
         {{ $productos->links() }}
     </div>
     </div>
-    
-   
+
+
 @endsection
 
 @section('script')

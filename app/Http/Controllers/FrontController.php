@@ -15,6 +15,7 @@ class FrontController extends Controller
         //$productos = Productos::all();
         $productos = Productos::all()->where('estado', '=', '1');
         return view('front.inicio', compact('productos'));
+     
     }
     public function index1()
     {
@@ -28,5 +29,12 @@ class FrontController extends Controller
         $productos=Productos::findOrFail($id);
         return view('front.detalle',compact('productos'));
        
+    }
+    public function modelos()
+    {
+        // $categorias = Categoria::all();
+        //$productos = Productos::all();
+        $productos = Productos::all()->where('estado', '=', '1');
+        return view('front.verproductos', compact('productos'));
     }
 }

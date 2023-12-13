@@ -8,6 +8,8 @@ use App\Http\Controllers\UnidadController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\GaleriaController;
+use App\Http\Controllers\ProductoDetalleController;
 use App\Http\Controllers\SucursalesController;
 
 /*
@@ -62,10 +64,21 @@ Route::get('cancelar_suc', function () {
     return redirect()->route('sucursales.index')->with('datos', 'Acción Cancelada ..!');
 })->name('cancelar_suc');
 Route::get('ventas/{id}/pdf', [VentaController::class, 'pdf'])->name('ventas.pdf');
+Route::get('/galeria/create', [GaleriaController::class, 'create'])->name('galeria.create');
+Route::post('/galeria/store', [GaleriaController::class, 'store'])->name('galeria.store');
+
+    Route::get('/admin/productos/detalle/{idproducto}/create', [ProductoDetalleController::class, 'create'])->name('detalles.create');
+    // Puedes agregar más rutas según sea necesario para el controlador ProductoDetalleController
+    Route::post('/productos/detalle/store', [ProductoDetalleController::class, 'store'])->name('detalleproducto.store');
+
+    Route::resource('/admin/productos/detalle', ProductoDetalleController::class);
+    Route::get('/admin/productos/detalle/{id}/edit', [ProductoDetalleController::class, 'edit'])->name('detalles.edit');
+
+
 
 });
 
-
+Route::get('/user/front/modelos', [FrontController::class, 'modelos'])->name('front.modelos');
 Route::get('/user/home', [FrontController::class, 'index'])->name('user.home');
 Route::get('/user/front/{id}/detalle', [FrontController::class, 'detalle'])->name('user.detalle');
 Route::resource('/front', FrontController::class);

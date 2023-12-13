@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Productos;
 use App\Models\Categoria;
+use App\Models\ProductoDetalle;
 use App\Models\Unidades;
 //
 
@@ -25,11 +26,11 @@ class ProductosController extends Controller
 
         //$productos = Categoria::with('categorias')->get();
 
-       
 
-        $buscarpor=$request->get('buscarpor');
-        $productos = Productos::where('estado', '=', '1')->where('descripcion','like','%'.$buscarpor.'%')->paginate($this::PAGINATION);
-        return view('productos.index', compact( 'productos','buscarpor'));
+
+        $buscarpor = $request->get('buscarpor');
+        $productos = Productos::where('estado', '=', '1')->where('descripcion', 'like', '%' . $buscarpor . '%')->paginate($this::PAGINATION);
+        return view('productos.index', compact('productos', 'buscarpor'));
     }
 
 
@@ -42,9 +43,12 @@ class ProductosController extends Controller
     {
         $categorias = Categoria::where('estado', '=', '1')->get();
         $unidades = Unidades::where('estado', '=', '1')->get();
-       
-        //$buscarpor=$request->get('buscarpor');
-        return view('productos.create', compact('categorias','unidades'));
+        $detalleProducto = ProductoDetalle::all();
+
+        // Obtén un producto nuevo para relacionar con el detalle
+        $producto = new Productos();
+
+        return view('productos.create', compact('categorias', 'unidades', 'detalleProducto', 'producto'));
     }
 
     /**
@@ -66,7 +70,7 @@ class ProductosController extends Controller
             $productos->imagen = $destinationPath . $filename;
         }
 
-/*
+        /*
         $data = request()->validate(
             [
                 'nombre' => 'required|max:30'
@@ -77,14 +81,15 @@ class ProductosController extends Controller
             ]
         );
         */
-       
+
         $productos->descripcion = $request->descripcion;
-        $productos->idcategoria = $request->idcategoria; 
+        $productos->idcategoria = $request->idcategoria;
         $productos->idunidad = $request->idunidad;
         $productos->precio = $request->precio;
-        $productos->stock=$request->stock;
+        $productos->stock = $request->stock;
         $productos->estado = '1';
         $productos->save();
+       
         return redirect()->route('productos.index')->with('datos', 'Registro Nuevo Guardado...!');
     }
 
@@ -111,7 +116,7 @@ class ProductosController extends Controller
         $categorias = Categoria::all()->where('estado', '=', '1');
         $unidades = Unidades::all()->where('estado', '=', '1');
         $productos = Productos::findOrFail($id);
-        return view('productos.edit', compact('productos', 'categorias','unidades'));
+        return view('productos.edit', compact('productos', 'categorias', 'unidades'));
     }
 
     /**
@@ -124,18 +129,16 @@ class ProductosController extends Controller
     public function update(Request $request, $id)
     {
         $productos = Productos::find($id);
-        
+
         //$productos->imagen=$filename;
         $productos->descripcion = $request->input('descripcion');
         $productos->idcategoria = $request->input('idcategoria');
         $productos->idunidad = $request->input('idunidad');
         $productos->precio = $request->input('precio');
         $productos->stock = $request->input('stock');
-        if($request->hasfile('imagen'))
-        {
-            $destination = 'images/featureds/'.$productos->imagen;
-            if(File::exists($destination))
-            {
+        if ($request->hasfile('imagen')) {
+            $destination = 'images/featureds/' . $productos->imagen;
+            if (File::exists($destination)) {
                 File::delete($destination);
             }
             $file = $request->file('imagen');

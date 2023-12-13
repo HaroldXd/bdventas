@@ -26,6 +26,11 @@ class Productos extends Model
         DB::raw("UPDATE productos set stock = stock - '".$cantidad."' where idproducto='".$idproducto."'"));
        
     }
+    public function detalleProducto()
+{
+    return $this->hasOne(ProductoDetalle::class, 'idproducto', 'idproducto');
+}
+
 
 
 }

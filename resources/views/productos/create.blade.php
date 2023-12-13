@@ -69,8 +69,7 @@
                     @enderror
                 </div>
             </div>
-
-
+  <!-- Subformulario de Detalle del Producto -->
 
 
 

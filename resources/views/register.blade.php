@@ -28,6 +28,7 @@
       <img src="{{asset('/mainpage/img/Changan-Logo.png')}}" alt="Logo" width="100" height="50" class="d-inline-block align-text-top" >
 
     </a>
+    <a href="/front" class="nav-link-1">Home</a>
   </div>
 </nav>
 
@@ -36,6 +37,7 @@
     <div class="logo">
         <img src="{{asset('/mainpage/img/Changan-Logo (1).png')}}" alt="Changan" width="200" height="100">
         <p> </p>
+        
     </div>
     <div class="content">
 
@@ -102,7 +104,14 @@
                 <button class=" btn-ingresar">
                     Registrar </button>
             </div>
-         
+            <div class="linebreak">
+                O
+            </div>
+
+
+            <div class="form-actions" style="align-content: center" align="center">
+                <a href="/login">Inicia Sesion</a>
+            </div>
          
         
             
