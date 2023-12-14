@@ -87,7 +87,7 @@
                                 <a href="{{ route('productos.confirmar', $itemproducto->idproducto) }}"
                                     class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Eliminar</a>
 
-                                   
+                             
                                 @if ($itemproducto->detalleProducto)
                                     <a href="{{ route('detalles.edit', $itemproducto->detalleProducto->id_detalle) }}"
                                         class="btn btn-success btn-sm">

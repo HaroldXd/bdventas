@@ -22,7 +22,7 @@
                         <div class="color">
                             <h3>Precio: S/{{ $item->precio }}</h3>
                         </div>
-                        <a href="#">Buy Now</a>
+                        <a href="{{ route('user.detalle',$item->idproducto) }}">Buy Now</a>
                     </div>
                 </div>
             </div>

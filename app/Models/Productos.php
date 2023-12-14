@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Categoria;
 use App\Models\Unidades;
-use DB;
+use Illuminate\Support\Facades\DB;
+
+
 class Productos extends Model
 {
     protected $table = 'productos';

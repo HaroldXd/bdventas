@@ -36,6 +36,7 @@ class ProductoDetalleController extends Controller
         $detalle_producto->garantia = $request->garantia;
         $detalle_producto->detalle = $request->detalle;
         $detalle_producto->idproducto = $idProducto;
+        $detalle_producto->idgaleria = $idProducto;
         $detalle_producto->estado = '1';
         $detalle_producto->save();
 
@@ -52,6 +53,21 @@ class ProductoDetalleController extends Controller
         return view('productos.editdetalle', compact('detalle'));
     }
 
+    public function update(Request $request, $id)
+    {
+        $detalle = ProductoDetalle::findOrFail($id);
 
+        // Validaciones si es necesario
+
+        // Actualizar los campos del detalle
+        $detalle->llantas = $request->llantas;
+        $detalle->garantia = $request->garantia;
+        $detalle->detalle = $request->detalle;
+
+        // Guardar los cambios
+        $detalle->save();
+
+        return redirect()->route('productos.index')->with('datos', 'Detalle del Producto actualizado con éxito.');
+    }
  
 }

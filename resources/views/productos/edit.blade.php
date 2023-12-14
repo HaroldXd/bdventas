@@ -72,12 +72,31 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="imagen">Imagen </label>
-                <input type="file" name="imagen" class="form-control " id="imagen">
-        
+                <label for="imagen">Imagen</label>
+                <div>
+                    <img id="imagen-preview" src="{{ asset($productos->imagen) }}" alt="" style="max-width: 200px; max-height: 200px;">
+                </div>
+            
+                <input type="file" name="imagen" class="form-control" id="imagen" onchange="previewImage(this)">
             </div>
-
-    </div>
+            
+            <script>
+                function previewImage(input) {
+                    var preview = document.getElementById('imagen-preview');
+                    var file = input.files[0];
+            
+                    if (file) {
+                        var reader = new FileReader();
+            
+                        reader.onload = function (e) {
+                            preview.src = e.target.result;
+                        };
+            
+                        reader.readAsDataURL(file);
+                    }
+                }
+            </script>
+            
 
 
 

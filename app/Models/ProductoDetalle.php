@@ -17,6 +17,6 @@ class ProductoDetalle extends Model
     }
     public function galeria()
 {
-    return $this->belongsTo(Galeria::class, 'idgaleria', 'id');
+    return $this->hasMany(Galeria::class, 'idgaleria', 'id');
 }
 }

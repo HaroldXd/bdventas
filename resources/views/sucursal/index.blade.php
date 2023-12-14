@@ -40,7 +40,7 @@
 
 
             <div class="table-responsive">
-                <table>
+                <table class="table">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Codigo</th>

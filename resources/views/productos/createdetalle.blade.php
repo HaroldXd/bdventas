@@ -20,18 +20,8 @@
             <label for="detalle">Detalle</label>
             <textarea class="form-control" id="detalle" name="detalle"></textarea>
         </div>
-        <div class="container">
-            <h1>Cargar Imágenes a la Galería</h1>
-            <form method="POST" action="{{ route('galeria.store') }}" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                    <label for="imagen">Seleccionar Imagen</label>
-                    <input type="file" name="imagen" class="form-control" id="imagen" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Cargar Imagen</button>
-            </form>
-        </div>
-
+      
+ 
 
 
 

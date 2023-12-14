@@ -9,7 +9,7 @@ use App\Models\Cliente;
 use App\Models\DetalleVenta;
 use App\Models\Productos;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class VentaController extends Controller

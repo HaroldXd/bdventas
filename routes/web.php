@@ -64,16 +64,25 @@ Route::get('cancelar_suc', function () {
     return redirect()->route('sucursales.index')->with('datos', 'Acción Cancelada ..!');
 })->name('cancelar_suc');
 Route::get('ventas/{id}/pdf', [VentaController::class, 'pdf'])->name('ventas.pdf');
-Route::get('/galeria/create', [GaleriaController::class, 'create'])->name('galeria.create');
-Route::post('/galeria/store', [GaleriaController::class, 'store'])->name('galeria.store');
+
+
+
+
+
+
+
+
+
+
 
     Route::get('/admin/productos/detalle/{idproducto}/create', [ProductoDetalleController::class, 'create'])->name('detalles.create');
     // Puedes agregar más rutas según sea necesario para el controlador ProductoDetalleController
     Route::post('/productos/detalle/store', [ProductoDetalleController::class, 'store'])->name('detalleproducto.store');
 
     Route::resource('/admin/productos/detalle', ProductoDetalleController::class);
-    Route::get('/admin/productos/detalle/{id}/edit', [ProductoDetalleController::class, 'edit'])->name('detalles.edit');
-
+Route::match(['get', 'post'], '/admin/productos/detalle/{id}/edit', [ProductoDetalleController::class, 'edit'])->name('detalles.edit');
+Route::match(['get', 'post'], '/admin/productos/detalle/{id}/update', [ProductoDetalleController::class, 'update'])->name('detalles.update');
+    
 
 
 });
