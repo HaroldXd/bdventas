@@ -63,7 +63,7 @@ Route::get('/admin/sucursales', [SucursalesController::class, 'index'])->name('s
 Route::get('cancelar_suc', function () {
     return redirect()->route('sucursales.index')->with('datos', 'Acción Cancelada ..!');
 })->name('cancelar_suc');
-Route::get('ventas/{id}/pdf', [VentaController::class, 'pdf'])->name('ventas.pdf');
+Route::get('/ventas/{id}/pdf', [VentaController::class, 'pdf'])->name('ventas.pdf');
 
 
 

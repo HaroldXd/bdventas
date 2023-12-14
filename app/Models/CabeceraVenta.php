@@ -21,10 +21,14 @@ class CabeceraVenta extends Model
     }
     public function detalleventas()
     {        
-        return $this->hasMany('App\DetalleVenta','venta_id','venta_id');        
+        return $this->hasMany(DetalleVenta::class,'venta_id','venta_id');        
     }
     public function tipo()
     {
         return $this->hasOne(Tipo::class,'tipo_id','tipo_id');
+    }
+    public function productos()
+    {
+        return $this->belongsTo(Productos::class, 'idproducto', 'idproducto');
     }
 }

@@ -15,5 +15,5 @@ class Categoria extends Model{
     public function productos(){
     return $this->hasMany(Productos::class,'idcategoria','idcategoria')->where('estado','=','1');
     }
-    
+ 
 }

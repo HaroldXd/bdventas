@@ -17,21 +17,23 @@ class Productos extends Model
     protected $fillable=['descripcion','imagen','idcategoria','idunidad','stock','precio','estado'];
 
     public function categorias(){
-        return $this->hasOne(Categoria::class, 'idcategoria', 'idcategoria') ;
+        return $this->hasMany(Categoria::class, 'idcategoria', 'idcategoria') ;
     }
     public function unidades(){
         return $this->hasOne(Unidades::class, 'idunidad', 'idunidad');
  
+    }
+    public function detalleProducto()
+    {
+        return $this->hasMany(DetalleVenta::class, 'idproducto', 'idproducto');
     }
     public static function ActualizarStock($idproducto,$cantidad){
         return DB::select(
         DB::raw("UPDATE productos set stock = stock - '".$cantidad."' where idproducto='".$idproducto."'"));
        
     }
-    public function detalleProducto()
-{
-    return $this->hasOne(ProductoDetalle::class, 'idproducto', 'idproducto');
-}
+
+
 
 
 

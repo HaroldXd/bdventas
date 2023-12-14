@@ -113,17 +113,15 @@
                     <td colspan="3">No hay registros</td>
                 </tr>
             @else
-                @foreach ($dt as $detalle)
-                    <tr>
-                        <td>{{ $detalle->cantidad }}</td>
-
-                        <td>{{ $detalle->productos->descripcion }}</td>
-
-                        <td>{{ $detalle->productos->categorias->descripcion }}</td>
-                        <td>{{ $detalle->productos->precio }}</td>
-                        <td>{{ $detalle->productos->precio * $detalle->cantidad }}</td>
-                    <tr>
-                @endforeach
+            @foreach ($dt as $detalle)
+            <tr>
+                <td>{{ $detalle }}</td>
+                <td>{{ $detalle }}</td>
+                <td>{{ $detalle}}</td>
+                <td>{{ $detalle }}</td>
+                <td>{{ $detalle }}</td>
+            </tr>
+         @endforeach
             @endif
 
 

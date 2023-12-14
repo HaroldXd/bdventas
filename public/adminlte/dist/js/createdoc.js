@@ -37,22 +37,18 @@ function mostrarCliente() {
 function mostrarProducto() {
     idproducto = $("#idproducto").val();
 
-    $.get('/EncontrarProducto/' + idproducto, function (data) {
-        if (data.length > 0) {
-            $('#unidad').val(data[0].unidad);
-            $('#precio').val(data[0].precio);
-            $('#stock').val(data[0].cantidad);
-        } else {
-            // Handle the case when no product is found with the given ID
-            alert('Product not found');
-            limpiar(); // Reset the fields
-        }
+    $.get('/admin/EncontrarProducto/' + idproducto, function (data) {
+
+        $('input[name=idproducto]').val(data[0].idproducto);
+        $('input[name=unidad]').val(data[0].unidad);
+        $('input[name=precio]').val(data[0].precio);
+        $('input[name=stock]').val(data[0].cantidad);
     });
 }
 
 function mostrarTipo() {
     tipo_id = $("#seltipo").val();
-    $.get('/EncontrarTipo/' + tipo_id, function (data) {
+    $.get('/admin/EncontrarTipo/' + tipo_id, function (data) {
         $('input[name=nrodoc]').val(data[0].serie + '' + data[0].numeracion);
     });
     verificatipo();

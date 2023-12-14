@@ -17,8 +17,6 @@ class DetalleVenta extends Model
     {
         return $this->hasOne(CabeceraVenta::class,'venta_id','venta_id');
     }
-    public function productos()
-    {        
-        return $this->hasOne(Productos::class,'idproducto','idproducto');        
-    }
+ 
+    
 }

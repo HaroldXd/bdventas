@@ -1,7 +1,5 @@
 @extends('layouts.plantilla')
-@section('titulo')
-    <title>Crear | Ventas  </title>
-    @endsection
+
 @section('estilos')
 
 @endsection

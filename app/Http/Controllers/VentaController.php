@@ -35,8 +35,8 @@ class VentaController extends Controller
 
        
         $ventas = CabeceraVenta::findOrFail($id);
-        $dt = DetalleVenta::all()->where('venta_id', '=', $id);
-        
+        $dt = CabeceraVenta::findOrFail($id);
+      
         $pdf = PDF::loadview('ventas.pdf', compact('ventas','dt'));
         return $pdf->stream();
 
@@ -122,6 +122,7 @@ class VentaController extends Controller
             ->where('p.idproducto', '=', $idproducto)
             ->select('p.idproducto', 'p.descripcion', 'u.descripcion as unidad', 'p.precio', 'p.stock')->get();
     }
+    
     public function PorTipo($tipo_id)
     {
         return DB::table('tipo as t')
