@@ -115,11 +115,9 @@
             @else
             @foreach ($dt as $detalle)
             <tr>
-                <td>{{ $detalle }}</td>
-                <td>{{ $detalle }}</td>
-                <td>{{ $detalle}}</td>
-                <td>{{ $detalle }}</td>
-                <td>{{ $detalle }}</td>
+                <td>{{ $dt }}</td>
+
+
             </tr>
          @endforeach
             @endif

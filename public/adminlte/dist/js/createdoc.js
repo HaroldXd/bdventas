@@ -121,7 +121,7 @@ function agregarDetalle() {
             '<td>' + descripcion + '</td><td><input type="text" name="unidad[]" value="' + unidad + '" style="width:140px; text-align:left;"></td>' +
             '<td style="text-align:right;"><input type="number" name="cantidad[]" value="' + cantidad + '"style="width:80px; text-align:right;" readonly></td>' +
             '<td style="textalign:right;"><input type="number" name="pventa[]" value="' + pventa + '" style="width:80px; text-align:right;" readonly></td>' +
-            '<td style="textalign:right;">' + number_format(subtotal[cont], 2) + '</td>' +
+            '<td style="textalign:right;">' + number_format(subtotal[cont], 3) + '</td>' +
             '</tr>';
         $('#detalles').append(fila);
         detalleventa.push({
@@ -146,9 +146,9 @@ function verificatipo() {
 
         document.getElementById("lbligv").hidden = false;
 
-        $('#subtotal').val(number_format(subtot, 2));
+        $('#subtotal').val(number_format(subtot, 3));
         $('#igv').val(number_format(igv, 2));
-        $('#total').val(number_format(total, 2));
+        $('#total').val(number_format(total, 3));
 
     }
     else {
@@ -160,7 +160,7 @@ function verificatipo() {
         document.getElementById("lbligv").hidden = true;
         $('#subtotal').val(0);
         $('#igv').val(0);
-        $('#total').val(number_format(total, 2));
+        $('#total').val(number_format(total, 3));
 
     }
 }

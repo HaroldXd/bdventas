@@ -6,10 +6,10 @@
 @section('modelos')
     <br><br>
 
-    <div class="container">
+    <div class="container" align="center">
         @foreach ($productos as $item)
-            <div class="col-md-4">
-                <div class="card">
+        <div class="col-md-3">
+            <div class="card">
                     <div class="imgBx">
                         <img src="{{ asset($item->imagen) }}" alt="nike-air-shoe">
                     </div>
@@ -36,24 +36,31 @@
 
 
             .container {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                /* Espacio entre las columnas */
-            }
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            margin: 0 auto;
+            max-width: 1200px; /* Adjust the max-width as needed */
+        }
 
+        .container .row {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+        }
             .container .card {
                 position: relative;
-                width: 320px;
+                width: 280px;
                 height: 450px;
                 
                 background: rgba(0, 0, 0, .5);
                 border-radius: 20px;
                 border: 50px;
                 overflow: hidden;
-               
-                /* Ancho de cada tarjeta con espacio entre ellas */
                 margin-bottom: 20px;
+                           /* Ancho de cada tarjeta con espacio entre ellas */
+             
 
 
 

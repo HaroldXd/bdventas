@@ -176,7 +176,7 @@
                     <button class="btn btn-primary" id="btnRegistrar" data-loading-text="<i class='fa a-spinner fa-spin'></i> Registrando">
                         <i class='fas fa-save'></i> Registrar</button>    
             
-                    <a href="{{URL::to('venta')}}" class='btn btn-danger'><i class='fas fa-ban'></i> Cancelar</a>              
+                    <a href="{{route('ventas.index')}}" class='btn btn-danger'><i class='fas fa-ban'></i> Cancelar</a>              
                 </div>    
             </div>
         </div>

@@ -35,7 +35,7 @@ class VentaController extends Controller
 
        
         $ventas = CabeceraVenta::findOrFail($id);
-        $dt = CabeceraVenta::findOrFail($id);
+        $dt = DetalleVenta::find($id)->get();
       
         $pdf = PDF::loadview('ventas.pdf', compact('ventas','dt'));
         return $pdf->stream();

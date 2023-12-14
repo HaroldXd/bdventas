@@ -17,7 +17,7 @@ class Productos extends Model
     protected $fillable=['descripcion','imagen','idcategoria','idunidad','stock','precio','estado'];
 
     public function categorias(){
-        return $this->hasMany(Categoria::class, 'idcategoria', 'idcategoria') ;
+        return $this->hasOne(Categoria::class, 'idcategoria', 'idcategoria') ;
     }
     public function unidades(){
         return $this->hasOne(Unidades::class, 'idunidad', 'idunidad');
@@ -25,7 +25,7 @@ class Productos extends Model
     }
     public function detalleProducto()
     {
-        return $this->hasMany(DetalleVenta::class, 'idproducto', 'idproducto');
+        return $this->hasOne(ProductoDetalle::class, 'idproducto', 'idproducto');
     }
     public static function ActualizarStock($idproducto,$cantidad){
         return DB::select(

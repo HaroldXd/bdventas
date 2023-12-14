@@ -10,13 +10,16 @@ class DetalleVenta extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'precio', 'cantidad',
+       'idproducto','venta_id','precio', 'cantidad',
     ];    
 
     public function ventas()
     {
         return $this->hasOne(CabeceraVenta::class,'venta_id','venta_id');
     }
- 
+    public function productos()
+    {
+        return $this->hasMany(ProductoDetalle::class,'idproducto','idproducto');
+    }
     
 }
