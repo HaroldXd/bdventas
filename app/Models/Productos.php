@@ -23,11 +23,7 @@ class Productos extends Model
         return $this->hasOne(Unidades::class, 'idunidad', 'idunidad');
  
     }
-    public function ventas()
-    {        
-        return $this->hasMany('App\DetalleVenta','idproducto','idproducto');
-       
-    }
+ 
     public static function ActualizarStock($idproducto,$cantidad){
         return DB::select(
         DB::raw("UPDATE productos set stock = stock - '".$cantidad."' where idproducto='".$idproducto."'"));
