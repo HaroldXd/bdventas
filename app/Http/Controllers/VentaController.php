@@ -8,6 +8,7 @@ use App\Models\Tipo;
 use App\Models\Cliente;
 use App\Models\DetalleVenta;
 use App\Models\Productos;
+use App\Models\Productos1;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -23,7 +24,7 @@ class VentaController extends Controller
     public function create()
     {
         $cliente = DB::table('clientes')->get();
-        $producto = DB::table('productos')->where('estado', '=', '1')->get();
+        $producto = DB::table('productos1')->where('estado', '=', '1')->get();
         $tipo = Tipo::all();
         $tipou = Tipo::select('tipo_id', 'descripcion')->orderBy('tipo_id', 'DESC')->get();
         $parametros = Parametro::findOrFail($tipou[0]->tipo_id);
@@ -35,7 +36,7 @@ class VentaController extends Controller
 
        
         $ventas = CabeceraVenta::findOrFail($id);
-        $dt = DetalleVenta::find($id)->get();
+        $dt = DetalleVenta::findOrFail($id);
       
         $pdf = PDF::loadview('ventas.pdf', compact('ventas','dt'));
         return $pdf->stream();
@@ -91,7 +92,7 @@ class VentaController extends Controller
                 $detalle->precio = $pventa[$cont];
                 $detalle->save();
                 /* Actualizar stock */
-                Productos::ActualizarStock($detalle->idproducto, $detalle->cantidad);
+                Productos1::ActualizarStock($detalle->idproducto, $detalle->cantidad);
                 $cont = $cont + 1;
             }
             /* Actualizar el numero de documento en la tabla parametro */
@@ -116,7 +117,7 @@ class VentaController extends Controller
     /* Para select2 Buscar Productos */
     public function ProductoCodigo($idproducto)
     {
-        return DB::table('productos as p')
+        return DB::table('productos1 as p')
             ->join('unidades as u', 'p.idunidad', '=', 'u.idunidad')
             ->where('p.estado', '=', '1')
             ->where('p.idproducto', '=', $idproducto)

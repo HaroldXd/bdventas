@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Productos;
 use App\Models\Categoria;
 use App\Models\ProductoDetalle;
+use App\Models\Productos1;
+use App\Models\Sucursal;
 
 class FrontController extends Controller
 
@@ -28,9 +30,9 @@ class FrontController extends Controller
     }
     public function detalle($id)
     {
-        $productoDetalle = ProductoDetalle::findOrFail($id);
+      
         $productos=Productos::findOrFail($id);
-        return view('front.detalle',compact('productos','productoDetalle'));
+        return view('front.detalle',compact('productos'));
        
     }
     public function modelos()
@@ -39,5 +41,32 @@ class FrontController extends Controller
         //$productos = Productos::all();
         $productos = Productos::all()->where('estado', '=', '1');
         return view('front.verproductos', compact('productos'));
+    }
+    public function nosotros()
+    {
+
+        return view('front.nosotros');
+    }
+    public function productos()
+    {
+        // $categorias = Categoria::all();
+        //$productos = Productos::all();
+        $productos = Productos1::all()->where('estado', '=', '1');
+        return view('front.verproductos1', compact('productos'));
+    }
+    public function detalle1($id)
+    {
+      
+        $productos=Productos1::findOrFail($id);
+        return view('front.detalle1',compact('productos'));
+       
+    }
+
+    public function sucursales()
+    {
+        // $categorias = Categoria::all();
+        //$productos = Productos::all();
+        $sucursales = Sucursal::all()->where('estado', '=', '1');
+        return view('front.listasucursales', compact('sucursales'));
     }
 }

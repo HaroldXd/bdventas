@@ -14,7 +14,7 @@
 
 
             <br>
-            <a href="{{ route('productos.create') }}" class="btn btn-primary"><i class="fas faplus"></i> Nuevo Registro</a>
+            <a href="{{ route('productos1.create') }}" class="btn btn-primary"><i class="fas faplus"></i> Nuevo Registro</a>
 
 
 
@@ -82,23 +82,13 @@
                             </td>
 
                             <td>
-                                <a href="{{ route('productos.edit', $itemproducto->idproducto) }}"
+                                <a href="{{ route('productos1.edit', $itemproducto->idproducto) }}"
                                     class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Editar</a>
-                                <a href="{{ route('productos.confirmar', $itemproducto->idproducto) }}"
+                                <a href="{{ route('productos1.confirmar', $itemproducto->idproducto) }}"
                                     class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Eliminar</a>
 
                              
-                                @if ($itemproducto->detalleProducto)
-                                    <a href="{{ route('detalles.edit', $itemproducto->detalleProducto->id_detalle) }}"
-                                        class="btn btn-success btn-sm">
-                                        <i class="fas fa-edit"></i> Editar Detalle
-                                    </a>
-                                @else
-                                    <a href="{{ route('detalles.create', $itemproducto->idproducto) }}"
-                                        class="btn btn-success btn-sm">
-                                        <i class="fas fa-plus"></i> Agregar Detalle
-                                    </a>
-                                @endif
+                           
 
                             </td>
 

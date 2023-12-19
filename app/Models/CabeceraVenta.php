@@ -19,16 +19,13 @@ class CabeceraVenta extends Model
     {
         return $this->hasOne(Cliente::class,'cliente_id','cliente_id');
     }
-    public function detalleventas()
-    {        
-        return $this->hasMany(DetalleVenta::class,'venta_id','venta_id');        
-    }
+
     public function tipo()
     {
         return $this->hasOne(Tipo::class,'tipo_id','tipo_id');
     }
     public function productos()
     {
-        return $this->belongsTo(Productos::class, 'idproducto', 'idproducto');
+        return $this->hasOne(Productos1::class,'idproducto','idproducto');
     }
 }

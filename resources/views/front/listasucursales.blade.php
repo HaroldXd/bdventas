@@ -1,33 +1,52 @@
 @extends('front.index')
+
+@section('titulo')
+<title>Sucursales</title>
+@endsection
 @section('contenido')
+    <h2 class="title" id="modelos">Sucursales</h2>
 
-<h2 class="title" id="modelos">MODELOS</h2>
-@foreach ($productos as $itemproducto)
-<div class="card1">
+  
+    
+        <div class="row row-cols-1 row-cols-md-2 g-4">
 
-    <div class="row row-cols-1 row-cols-md-2 g-4">
+            @foreach ($sucursales as $itemproducto)
+                <div class="card  mb-3" style="max-width: 18rem; margin-inline-end: 3% ; margin-inline-start: 3%; border-color: black; text-align: center">
+                    <div class="card-header bg-transparent">{{ $itemproducto->descripcion }}</div>
+                    <div class="card-body text">
+                        <h5 class="card-head">Dirección:
+                            <br>
+                            {{ $itemproducto->direccion }}</h5>
+                        <p class="card-text">
+                            Servicios:
+                            <br>
+                            {{ $itemproducto->idservicio }}
+                            <br>
+                            Provincia:
+                            <br>
+                            {{ $itemproducto->provincia->nombre }}
+                            <br>
+                            Distrito:
+                            <br>
+                            {{ $itemproducto->distrito->nombre }}
+                            <br>
+                            Horarios:
+                            <br>
+                            {{ $itemproducto->idhorario }}
 
-        <a class="nav-link active" aria-current="page" href="{{ route('front.detalle', $itemproducto->idproducto) }}">
-            <DIV class="card text-bg-light mb-3">
-
-                <img src="{{ asset($itemproducto->imagen) }}" alt="{{ $itemproducto->title }}"
-                    class="rounded mx-auto d-blocks" width="200" height="100">
-                <div class="container">
-
-
-                    <h5 class="card-head">{{ $itemproducto->nombre }}</h5>
-                    <p class="card-text">{{ $itemproducto->categorias->descripcion }}
-                        <br>
-                        S/. {{ $itemproducto->precio }}
-                    </p>
-
-                </DIV>
-            </div>
-        </a>
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent border-success">
+                        <td><a href="https://www.google.com/maps/dir/Current+Location/{{ $itemproducto->ubicacion }}"
+                                target="_blank">Cómo Llegar</a></td>
+                    </div>
+                </div>
+            @endforeach
 
 
-    </div>
+
+        </div>
 
 
-</div>
-@endforeach
+  
+@endsection

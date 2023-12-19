@@ -15,10 +15,13 @@ class Sucursal extends Model
     protected $fillable = [
         'descripcion', 'direccion','idprovincia','iddistrito','idservicio','idhorario','ubicacion','estado'
     ];    
-    public function distrito(){
-        return $this->hasOne(Distrito::class,'iddistrito','iddistrito');
-        }
-        public function provincia(){
-            return $this->hasOne(Provincia::class,'idprovincia','idprovincia');
-            }
+    public function provincia()
+    {
+        return $this->belongsTo(Provincia::class, 'idprovincia');
+    }
+    
+    public function distrito()
+    {
+        return $this->belongsTo(Distrito::class, 'iddistrito');
+    }
 }

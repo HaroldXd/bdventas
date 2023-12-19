@@ -9,9 +9,9 @@ use App\Models\Unidades;
 use Illuminate\Support\Facades\DB;
 
 
-class Productos extends Model
+class Productos1 extends Model
 {
-    protected $table = 'productos';
+    protected $table = 'productos1';
     protected $primaryKey = 'idproducto';
     public $timestamps=false;
     protected $fillable=['descripcion','imagen','idcategoria','idunidad','stock','precio','estado'];
@@ -33,8 +33,6 @@ class Productos extends Model
         DB::raw("UPDATE productos set stock = stock - '".$cantidad."' where idproducto='".$idproducto."'"));
        
     }
-
-
 
 
 

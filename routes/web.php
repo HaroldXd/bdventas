@@ -10,6 +10,7 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\ProductoDetalleController;
+use App\Http\Controllers\Productos1Controller;
 use App\Http\Controllers\SucursalesController;
 
 /*
@@ -52,6 +53,12 @@ Route::get('cancelar', function () {
    Route::get('cancelar_prod', function () {
     return redirect()->route('productos.index')->with('datos', 'Acción Cancelada ..!');
 })->name('cancelar_prod');
+Route::get('cancelar_prod1', function () {
+    return redirect()->route('productos1.index')->with('datos', 'Acción Cancelada ..!');
+})->name('cancelar_prod1');
+Route::get('/admin/productos1/{id}/confirmar', [Productos1Controller::class, 'confirmar'])->name('productos1.confirmar');
+Route::resource('/admin/productos1', Productos1Controller::class);
+
 Route::get('/admin/productos/{id}/confirmar', [ProductosController::class, 'confirmar'])->name('productos.confirmar');
 Route::resource('/admin/productos', ProductosController::class);
 Route::resource('/admin/ventas', VentaController::class);
@@ -88,9 +95,13 @@ Route::match(['get', 'post'], '/admin/productos/detalle/{id}/update', [ProductoD
 
 
 });
-
+Route::get('/user/front/productos', [FrontController::class, 'productos'])->name('front.productos');
+Route::get('/user/front/sucursales', [FrontController::class, 'sucursales'])->name('front.sucursales');
+Route::get('/user/front/nosotros', [FrontController::class, 'nosotros'])->name('front.nosotros');
 Route::get('/user/front/modelos', [FrontController::class, 'modelos'])->name('front.modelos');
 Route::get('/user/home', [FrontController::class, 'index'])->name('user.home');
+
+Route::get('/user/front/{id}/detalle1', [FrontController::class, 'detalle1'])->name('user.detalle1');
 Route::get('/user/front/{id}/detalle', [FrontController::class, 'detalle'])->name('user.detalle');
 Route::resource('/front', FrontController::class);
 

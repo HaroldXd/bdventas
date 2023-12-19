@@ -19,7 +19,7 @@ class DetalleVenta extends Model
     }
     public function productos()
     {
-        return $this->hasMany(ProductoDetalle::class,'idproducto','idproducto');
+        return $this->hasOne(CabeceraVenta::class,'idproducto','idproducto');
     }
     
 }

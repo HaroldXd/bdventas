@@ -36,7 +36,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('front.modelos') }}">Modelos</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('front.productos') }}">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('front.sucursales') }}">Sucursales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('front.nosotros') }}">Nosotros</a>
+                    </li>
 
                     <li>
 
