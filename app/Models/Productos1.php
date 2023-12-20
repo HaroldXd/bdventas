@@ -23,17 +23,16 @@ class Productos1 extends Model
         return $this->hasOne(Unidades::class, 'idunidad', 'idunidad');
  
     }
-    public function ventas()
-    {        
-        return $this->hasMany('App\DetalleVenta','idproducto','idproducto');
-       
-    }
+  
     public static function ActualizarStock($idproducto,$cantidad){
         return DB::select(
-        DB::raw("UPDATE productos set stock = stock - '".$cantidad."' where idproducto='".$idproducto."'"));
+        DB::raw("UPDATE productos1 set stock = stock - '".$cantidad."' where idproducto='".$idproducto."'"));
        
     }
-
+    public function detalleVentas()
+    {
+        return $this->hasMany(DetalleVenta::class, 'idproducto', 'idproducto');
+    }
 
 
 }

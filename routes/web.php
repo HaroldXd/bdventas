@@ -12,6 +12,8 @@ use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\ProductoDetalleController;
 use App\Http\Controllers\Productos1Controller;
 use App\Http\Controllers\SucursalesController;
+use App\Models\DetalleVenta;
+use App\Models\Productos1;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +47,12 @@ Route::get('cancelar', function () {
 Route::get('/admin/categoria/{id}/confirmar',[CategoriaController::class,'confirmar'])->name('categoria.confirmar');
 Route::get('/admin/categoria', [CategoriaController::class, 'index'])->name('categoria.index');
 Route::resource('/admin/unidad', UnidadController::class);
+
+
+
+
+
+
 Route::get('cancelar', function () {
     return redirect()->route('unidad.index')->with('datos','Acción Cancelada ..!');
    })->name('cancelar');
@@ -62,6 +70,7 @@ Route::resource('/admin/productos1', Productos1Controller::class);
 Route::get('/admin/productos/{id}/confirmar', [ProductosController::class, 'confirmar'])->name('productos.confirmar');
 Route::resource('/admin/productos', ProductosController::class);
 Route::resource('/admin/ventas', VentaController::class);
+
 Route::get('/admin/EncontrarProducto/{idproducto}', [VentaController::class,'ProductoCodigo']);
 Route::get('/admin/EncontrarTipo/{tipo_id}', [VentaController::class,'PorTipo']);
 Route::get('/admin/sucursales/{id}/confirmar', [SucursalesController::class, 'confirmar'])->name('sucursales.confirmar');
@@ -71,6 +80,7 @@ Route::get('cancelar_suc', function () {
     return redirect()->route('sucursales.index')->with('datos', 'Acción Cancelada ..!');
 })->name('cancelar_suc');
 Route::get('/ventas/{id}/pdf', [VentaController::class, 'pdf'])->name('ventas.pdf');
+
 Route::get('cancelar_venta', function () {
     return redirect()->route('venta.index')->with('datos', 'Acción Cancelada ..!');
 })->name('cancelar_venta');

@@ -104,22 +104,30 @@
                
                 <th scope="col">Categoria</th>
                 <th scope="col">Unidad</th>
+                
                 <th scope="col">Total</th>
             </tr>
         </thead>
         <tbody>
-            @if (is_countable($ventas) && count($ventas) <= 0)
+            @if (is_countable($detalleVentas) && count($detalleVentas) <= 0)
                 <tr>
                     <td colspan="3">No hay registros</td>
                 </tr>
             @else
-            @foreach ($dt as $detalle)
-            <tr>
-                <td>{{ $dt }}</td>
-
-
-            </tr>
-         @endforeach
+       @foreach ($detalleVentas as $dt )
+       <tr>
+        <th>{{$dt->cantidad}}</th>
+        <th>{{$dt->producto->descripcion}}</th>
+        <th>{{$dt->producto->categorias->descripcion}}</th>
+        <th>{{$dt->producto->unidades->descripcion}}</th>
+        <th>{{$dt->producto->precio * $dt->cantidad }}</th>
+       </tr>
+    
+           
+       @endforeach
+            
+               
+    
             @endif
 
 

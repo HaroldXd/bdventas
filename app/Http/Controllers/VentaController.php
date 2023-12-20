@@ -31,17 +31,20 @@ class VentaController extends Controller
         return view('ventas.create', compact('tipo', 'parametros', 'cliente', 'producto'));
     }
 
-    public function pdf(Request $request,$id)
+    public function pdf(Request $request, $id)
     {
-
-       
         $ventas = CabeceraVenta::findOrFail($id);
-        $dt = DetalleVenta::findOrFail($id);
-      
-        $pdf = PDF::loadview('ventas.pdf', compact('ventas','dt'));
+        $detalleVentas = DetalleVenta::where('venta_id', $id)->get();
+
+        // Retrieve related products for each detail
+        foreach ($detalleVentas as $detalleVenta) {
+            $detalleVenta->producto = Productos1::findOrFail($detalleVenta->idproducto);
+        }
+
+        $pdf = PDF::loadview('ventas.pdf', compact('ventas', 'detalleVentas'));
         return $pdf->stream();
 
-  
+       
     }
 
     public function store(Request $request)
